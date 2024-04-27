@@ -19,4 +19,8 @@ func main() {
 		line := scanner.Text()
 		fmt.Println(line)
 	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading input:", err)
+	}
 }
