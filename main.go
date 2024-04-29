@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -15,12 +16,35 @@ func main() {
 
 	scanner := bufio.NewScanner(f)
 
+
+    stations := map[string][ ]float64{}
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println(line)
+        parts := strings.Split(line, ";")
+        station := parts[0]
+        temp, err := strconv.ParseFloat(parts[1], 64)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+
+        if _,ok := stations[station]; !ok {
+           stations[station] = []float64(temp)
+        }else{
+stations[station] = append(stations[station],temp)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "reading input:", err)
-	}
 }
