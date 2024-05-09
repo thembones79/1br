@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 	// "strconv"
-    // "strings"
-    "log"
+	// "strings"
+	"log"
 	"time"
 )
 
@@ -21,10 +21,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-    chunkSize := 500 * 1024 * 1024
-    for {
+	chunkSize := 500 * 1024 * 1024
+	buf := make([]byte, chunkSize)
+	for {
+		n, err := f.Read(buf)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-    }
+	}
 
 	// scanner := bufio.NewScanner(f)
 
@@ -38,14 +43,14 @@ func main() {
 	// 		log.Fatal(err)
 	// 	}
 	//
- //        _ = station
- //        _ = temp
+	//        _ = station
+	//        _ = temp
 
-		// if _, ok := stations[station]; !ok {
-		// 	stations[station] = []float64{temp}
-		// } else {
-		// 	stations[station] = append(stations[station], temp)
-		// }
+	// if _, ok := stations[station]; !ok {
+	// 	stations[station] = []float64{temp}
+	// } else {
+	// 	stations[station] = append(stations[station], temp)
+	// }
 
 	// }
 
